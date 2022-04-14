@@ -2,6 +2,7 @@
 
 YAGV_VERSION = "0.5.8"        # -- check Makefile and setup.py too
 
+import sys
 import pyglet
 import math
 
@@ -57,7 +58,6 @@ class App:
 	def main(self):
 		
 		#### MAIN CODE ####
-		import sys
 
 		path = ''
 
@@ -507,7 +507,7 @@ class MyWindow(pyglet.window.Window):
 		if button & mouse.RIGHT:
 			self.app.panning_end(x, y, button, modifiers)
 
-	def on_key_release(self, symbol, modifiers):
+	def on_key_press(self, symbol, modifiers):
 		print("pressed key: %s, mod: %s"%(symbol, modifiers))
 		#print("pressed key: %s, mod: %s"%(pyglet.window.key.R, pyglet.window.key.MOD_CTRL))
 
@@ -521,6 +521,8 @@ class MyWindow(pyglet.window.Window):
 			self.app.layer_bottom()
 		elif symbol==pyglet.window.key.END:
 			self.app.layer_top()
+		elif symbol==pyglet.window.key.Q:
+			pyglet.app.exit()
 		else:
 			print("pressed key: %s, mod: %s"%(symbol, modifiers))
 		

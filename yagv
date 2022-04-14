@@ -507,24 +507,23 @@ class MyWindow(pyglet.window.Window):
 		if button & mouse.RIGHT:
 			self.app.panning_end(x, y, button, modifiers)
 
+	def on_text_motion(self, motion):
+		if motion==pyglet.window.key.MOTION_DOWN:
+			self.app.layer_down()
+		elif motion==pyglet.window.key.MOTION_UP:
+			self.app.layer_up()
+
 	def on_key_press(self, symbol, modifiers):
 		print("pressed key: %s, mod: %s"%(symbol, modifiers))
-		#print("pressed key: %s, mod: %s"%(pyglet.window.key.R, pyglet.window.key.MOD_CTRL))
 
 		if symbol==pyglet.window.key.R and modifiers & pyglet.window.key.MOD_CTRL:
 			self.app.reload()
-		elif symbol==pyglet.window.key.UP:
-			self.app.layer_up()
-		elif symbol==pyglet.window.key.DOWN:
-			self.app.layer_down()
 		elif symbol==pyglet.window.key.HOME:
 			self.app.layer_bottom()
 		elif symbol==pyglet.window.key.END:
 			self.app.layer_top()
 		elif symbol==pyglet.window.key.Q:
 			pyglet.app.exit()
-		else:
-			print("pressed key: %s, mod: %s"%(symbol, modifiers))
 		
 	def placeLabels(self, width, height):
 		x = 5

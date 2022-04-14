@@ -14,12 +14,13 @@ setuptools.setup(
       "Topic :: Multimedia :: Graphics :: Presentation",
       "Topic :: Multimedia :: Graphics :: Viewers"
     ],
-    data_files = [ ( 'data', ['data/hana_swimsuit_fv_solid_v1.gcode'] ), ('icons', ['icon.png']) ],
+    data_files = [ ( 'data', ['data/hana_swimsuit_fv_solid_v1.gcode'] ) ],
     py_modules = ['gcodeParser'],
     scripts = ['yagv'],
     python_requires='>3.6',
     install_requires=[
         'setuptools',
-        'pyglet>=1.4.10, <2'
+        'pyglet>=1.4.10, <2',
+        'numpy'
     ]
 )
